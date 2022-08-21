@@ -12,7 +12,11 @@ import {
   useGlobalDispatchContext,
 } from "../context/globalContext"
 
-const Header: React.FC = () => {
+type HeaderProps = {
+  onCursor: (cursorType: string) => void
+}
+
+const Header: React.FC<HeaderProps> = ({ onCursor }) => {
   const dispatch = useGlobalDispatchContext()
   const { currentTheme } = useGlobalStateContext()
 
@@ -36,9 +40,16 @@ const Header: React.FC = () => {
     >
       <Container>
         <Flex spaceBetween noHeight>
-          <Logo>
+          <Logo
+            onMouseEnter={() => onCursor("hovered")}
+            onMouseLeave={() => onCursor("")}
+          >
             <Link to="/">W</Link>
-            <span onClick={toggleTheme}>
+            <span
+              onClick={toggleTheme}
+              onMouseEnter={() => onCursor("pointer")}
+              onMouseLeave={() => onCursor("")}
+            >
               {currentTheme === "dark" ? <MdLightMode /> : <MdNightlight />}
             </span>
             <Link to="/">NDER</Link>

@@ -8,9 +8,13 @@ import { normalize } from "styled-normalize"
 
 // Components
 import Header from "./header"
+import Cursor from "./customCursor"
 
 // Context
-import { useGlobalStateContext } from "../context/globalContext"
+import {
+  useGlobalStateContext,
+  useGlobalDispatchContext,
+} from "../context/globalContext"
 
 type ThemeType = { background: string; text: string; pink: string }
 
@@ -18,7 +22,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
   ${normalize}
   * {
     text-decoration: none;
-    /* cursor: none; */
+    cursor: none;
   }
 
   html {
@@ -62,12 +66,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     pink: "#f28482",
   }
 
-  const { currentTheme } = useGlobalStateContext()
+  const { currentTheme, cursorStyles } = useGlobalStateContext()
+  const dispatch = useGlobalDispatchContext()
+
+  // Cursor handlers
+  const onCursor = (cursorType: string) => {
+    cursorType = cursorStyles.includes(cursorType) ? cursorType : ""
+    dispatch({ type: "CURSOR_TYPE", cursorType })
+  }
 
   return (
     <ThemeProvider theme={currentTheme === "dark" ? darkTheme : lightTheme}>
       <GlobalStyle />
-      <Header />
+      <Cursor />
+      <Header onCursor={onCursor} />
       <main>{children}</main>
     </ThemeProvider>
   )

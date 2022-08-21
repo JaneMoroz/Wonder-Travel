@@ -6,12 +6,19 @@ interface Props {
 
 type GlobalStateContextType = {
   currentTheme: string
+  cursorType: string
+  cursorStyles: string[]
 }
 
-type Action = {
-  type: string
-  theme: string
-}
+type Action =
+  | {
+      type: "TOGGLE_THEME"
+      theme: string
+    }
+  | {
+      type: "CURSOR_TYPE"
+      cursorType: string
+    }
 
 const GlobalStateContext = createContext({} as GlobalStateContextType)
 const GlobalDispatchContext = createContext({} as React.Dispatch<Action>)
@@ -24,8 +31,11 @@ const globalReducer = (state: GlobalStateContextType, action: Action) => {
         currentTheme: action.theme,
       }
     }
-    default: {
-      throw new Error(`Unhandled action type: ${action.type}`)
+    case "CURSOR_TYPE": {
+      return {
+        ...state,
+        cursorType: action.cursorType,
+      }
     }
   }
 }
@@ -36,6 +46,8 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       window.localStorage.getItem("theme") === null
         ? "dark"
         : window.localStorage.getItem("theme"),
+    cursorType: "",
+    cursorStyles: ["pointer", "hovered"],
   } as GlobalStateContextType)
 
   return (
