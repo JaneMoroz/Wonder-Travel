@@ -1,4 +1,5 @@
-import React, { createContext, useReducer, useContext } from "react"
+import React, { createContext, useReducer, useContext, useEffect } from "react"
+import { getStorageTheme, saveStorageTheme } from "../utils/localStorage"
 
 interface Props {
   children: React.ReactNode
@@ -19,6 +20,12 @@ type Action =
       type: "CURSOR_TYPE"
       cursorType: string
     }
+
+const intitalState = {
+  currentTheme: "",
+  cursorType: "",
+  cursorStyles: ["pointer", "hovered"],
+} as GlobalStateContextType
 
 const GlobalStateContext = createContext({} as GlobalStateContextType)
 const GlobalDispatchContext = createContext({} as React.Dispatch<Action>)
@@ -41,14 +48,18 @@ const globalReducer = (state: GlobalStateContextType, action: Action) => {
 }
 
 export const GlobalProvider: React.FC<Props> = ({ children }) => {
-  const [state, dispatch] = useReducer(globalReducer, {
-    currentTheme:
-      window.localStorage.getItem("theme") === null
-        ? "dark"
-        : window.localStorage.getItem("theme"),
-    cursorType: "",
-    cursorStyles: ["pointer", "hovered"],
-  } as GlobalStateContextType)
+  const [state, dispatch] = useReducer(globalReducer, intitalState)
+
+  // Get theme from the local storage and set it to the current theme
+  useEffect(() => {
+    const theme = getStorageTheme()
+    dispatch({ type: "TOGGLE_THEME", theme })
+  }, [])
+
+  // Set theme and save it to the local storage when it gets changed
+  useEffect(() => {
+    saveStorageTheme(state.currentTheme)
+  }, [state.currentTheme])
 
   return (
     <GlobalDispatchContext.Provider value={dispatch}>

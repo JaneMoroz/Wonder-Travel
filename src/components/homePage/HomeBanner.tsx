@@ -20,79 +20,106 @@ const HomeBanner = () => {
   const size = useWindowSize()
   const { currentTheme } = useGlobalStateContext()
   let canvas = useRef<HTMLCanvasElement>(null)
+
   useEffect(() => {
-    let renderingElement = canvas.current
-    if (renderingElement) {
-      // create an offscreen canvas only for the drawings
-      let drawingElement = renderingElement.cloneNode() as HTMLCanvasElement
-      let drawingCtx = drawingElement?.getContext("2d")
-      let renderingCtx = renderingElement?.getContext("2d")
-      let lastX: number
-      let lastY: number
-      let moving = false
+    if (size.height > 0 && size.width > 0) {
+      let renderingElement = canvas.current
+      if (renderingElement) {
+        // create an offscreen canvas only for the drawings
+        let drawingElement =
+          renderingElement.cloneNode() as HTMLCanvasElement | null
+        // contexts
+        let drawingCtx = drawingElement!.getContext(
+          "2d"
+        ) as CanvasRenderingContext2D
+        let renderingCtx = renderingElement.getContext(
+          "2d"
+        ) as CanvasRenderingContext2D
 
-      if (renderingCtx) {
-        renderingCtx.globalCompositeOperation = "source-over"
-        renderingCtx.fillStyle = currentTheme === "dark" ? "#2f3e46" : "#cad2c5"
-        renderingCtx.fillRect(0, 0, size.width, size.height)
+        // coordinates
+        let lastX: number
+        let lastY: number
 
-        const _mouseover = (e: MouseEvent): void => {
-          moving = true
-          lastX = e.pageX - renderingElement.offsetLeft
-          lastY = e.pageY - renderingElement.offsetTop
-        }
+        // boolean responsible for moving
+        let moving = false
 
-        const _mouseup = (e: MouseEvent): void => {
-          moving = false
-          lastX = e.pageX - renderingElement.offsetLeft
-          lastY = e.pageY - renderingElement.offsetTop
-        }
+        if (renderingCtx) {
+          renderingCtx.globalCompositeOperation = "source-over"
+          renderingCtx.fillStyle =
+            currentTheme === "dark" ? "#2f3e46" : "#cad2c5"
+          renderingCtx.fillRect(0, 0, size.width, size.height)
 
-        const _mousemove = (e: MouseEvent): void => {
-          if (moving) {
-            drawingCtx.globalCompositeOperation = "source-over"
-            renderingCtx.globalCompositeOperation = "destination-out"
-            let currentX = e.pageX - renderingElement.offsetLeft
-            let currentY = e.pageY - renderingElement.offsetTop
-            drawingCtx.lineJoin = "round"
-            drawingCtx.moveTo(lastX, lastY)
-            drawingCtx.lineTo(currentX, currentY)
-            drawingCtx.closePath()
-            drawingCtx.lineWidth = 120
-            drawingCtx.stroke()
-            lastX = currentX
-            lastY = currentY
-            renderingCtx.drawImage(drawingElement, 0, 0)
+          const _mouseover = (e: MouseEvent): void => {
+            moving = true
+            lastX = e.pageX - renderingElement!.offsetLeft
+            lastY = e.pageY - renderingElement!.offsetTop
           }
-        }
 
-        const _mouseclick = (e: MouseEvent): void => {
-          moving = true
-          lastX = e.pageX - renderingElement.offsetLeft
-          lastY = e.pageY - renderingElement.offsetTop
-        }
+          const _mouseup = (e: MouseEvent): void => {
+            moving = false
+            lastX = e.pageX - renderingElement!.offsetLeft
+            lastY = e.pageY - renderingElement!.offsetTop
+          }
 
-        renderingElement.addEventListener("mouseover", _mouseover)
-        renderingElement.addEventListener("mouseup", _mouseup)
-        renderingElement.addEventListener("mousemove", _mousemove)
-        renderingElement.addEventListener("click", _mouseclick)
+          const _mousemove = (e: MouseEvent): void => {
+            if (moving) {
+              drawingCtx.globalCompositeOperation = "source-over"
+              renderingCtx.globalCompositeOperation = "destination-out"
+              let currentX = e.pageX - renderingElement!.offsetLeft
+              let currentY = e.pageY - renderingElement!.offsetTop
+              drawingCtx.lineJoin = "round"
+              drawingCtx.moveTo(lastX, lastY)
+              drawingCtx.lineTo(currentX, currentY)
+              drawingCtx.closePath()
+              drawingCtx.lineWidth = 120
+              drawingCtx.stroke()
+              lastX = currentX
+              lastY = currentY
+              renderingCtx.drawImage(drawingElement!, 0, 0)
+            }
+          }
 
-        return () => {
-          drawingElement = null
-          drawingElement = renderingElement.cloneNode()
-          renderingElement.removeEventListener("mouseover", _mouseover)
-          renderingElement.removeEventListener("mouseup", _mouseup)
-          renderingElement.removeEventListener("mousemove", _mousemove)
+          const _mouseclick = (e: MouseEvent): void => {
+            moving = true
+            lastX = e.pageX - renderingElement!.offsetLeft
+            lastY = e.pageY - renderingElement!.offsetTop
+          }
+
+          renderingElement.addEventListener("mouseover", _mouseover)
+          renderingElement.addEventListener("mouseup", _mouseup)
+          renderingElement.addEventListener("mousemove", _mousemove)
           renderingElement.addEventListener("click", _mouseclick)
+
+          return () => {
+            drawingElement = null
+            drawingElement! = renderingElement!.cloneNode() as HTMLCanvasElement
+            renderingElement!.removeEventListener("mouseover", _mouseover)
+            renderingElement!.removeEventListener("mouseup", _mouseup)
+            renderingElement!.removeEventListener("mousemove", _mousemove)
+            renderingElement!.addEventListener("click", _mouseclick)
+          }
         }
       }
     }
-  }, [currentTheme])
+  }, [currentTheme, size])
+
+  if (size.height === 0 && size.width === 0 && currentTheme === null) {
+    return <Banner></Banner>
+  }
 
   return (
     <Banner>
       <Video>
-        <video height="100%" width="100%" loop autoPlay muted src={heroVideo} />
+        {size.height > 0 && size.width > 0 && (
+          <video
+            height="100%"
+            width="100%"
+            loop
+            autoPlay
+            muted
+            src={heroVideo}
+          />
+        )}
       </Video>
       <Canvas height={size.height} width={size.width} ref={canvas} />
       <BannerTitle>
