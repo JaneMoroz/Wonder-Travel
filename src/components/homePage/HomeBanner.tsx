@@ -16,7 +16,11 @@ import useWindowSize from "../../hooks/useWindowSize"
 // Context
 import { useGlobalStateContext } from "../../context/globalContext"
 
-const HomeBanner = () => {
+type HomeBannerProps = {
+  onCursor: (cursorType: string) => void
+}
+
+const HomeBanner: React.FC<HomeBannerProps> = ({ onCursor }) => {
   const size = useWindowSize()
   const { currentTheme } = useGlobalStateContext()
   let canvas = useRef<HTMLCanvasElement>(null)
@@ -107,6 +111,18 @@ const HomeBanner = () => {
     return <Banner></Banner>
   }
 
+  // Animation
+  const headiline = {
+    initial: { y: 800 },
+    animate: {
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: [0.6, 0.05, -0.01, 0.9],
+      },
+    },
+  }
+
   return (
     <Banner>
       <Video>
@@ -121,9 +137,17 @@ const HomeBanner = () => {
           />
         )}
       </Video>
-      <Canvas height={size.height} width={size.width} ref={canvas} />
+      <Canvas
+        height={size.height}
+        width={size.width}
+        ref={canvas}
+        onMouseLeave={() => onCursor("")}
+        onMouseEnter={() => onCursor("hovered")}
+      />
       <BannerTitle>
-        <Headline>КАМЧАТКА</Headline>
+        <Headline variants={headiline} initial="initial" animate="animate">
+          КАМЧАТКА
+        </Headline>
       </BannerTitle>
     </Banner>
   )

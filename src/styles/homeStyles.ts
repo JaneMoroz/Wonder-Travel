@@ -38,7 +38,7 @@ export const BannerTitle = styled.h1`
 `
 
 // Headline
-export const Headline = styled.span`
+export const Headline = styled(motion.span)`
   display: block;
   font-size: 10rem;
   font-weight: 900;
