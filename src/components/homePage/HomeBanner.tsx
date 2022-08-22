@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import heroVideo from "../../assets/video/hero-big.mp4"
+import heroVideo from "../../assets/video/hero-small.mp4"
 
 // Styled components
 import {

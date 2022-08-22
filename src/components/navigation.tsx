@@ -90,7 +90,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCursor }) => {
                         onMouseEnter={() => onCursor("pointer")}
                         onMouseLeave={() => onCursor("")}
                       >
-                        <Link to={`/tours/${tour.path}`}>
+                        <Link to={`${tour.path}`}>
                           <motion.div
                             initial={{ x: -108 }}
                             whileHover={{
