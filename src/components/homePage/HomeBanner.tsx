@@ -50,7 +50,7 @@ const HomeBanner: React.FC<HomeBannerProps> = ({ onCursor }) => {
         if (renderingCtx) {
           renderingCtx.globalCompositeOperation = "source-over"
           renderingCtx.fillStyle =
-            currentTheme === "dark" ? "#2f3e46" : "#cad2c5"
+            currentTheme === "dark" ? "#2f3e46" : "#ffffff"
           renderingCtx.fillRect(0, 0, size.width, size.height)
 
           const _mouseover = (e: MouseEvent): void => {

@@ -9,6 +9,7 @@ type GlobalStateContextType = {
   currentTheme: string
   cursorType: string
   cursorStyles: string[]
+  toggleMenu: boolean
 }
 
 type Action =
@@ -20,11 +21,16 @@ type Action =
       type: "CURSOR_TYPE"
       cursorType: string
     }
+  | {
+      type: "TOGGLE_MENU"
+      toggleMenu: boolean
+    }
 
 const intitalState = {
   currentTheme: "",
   cursorType: "",
   cursorStyles: ["pointer", "hovered"],
+  toggleMenu: false,
 } as GlobalStateContextType
 
 const GlobalStateContext = createContext({} as GlobalStateContextType)
@@ -42,6 +48,12 @@ const globalReducer = (state: GlobalStateContextType, action: Action) => {
       return {
         ...state,
         cursorType: action.cursorType,
+      }
+    }
+    case "TOGGLE_MENU": {
+      return {
+        ...state,
+        toggleMenu: action.toggleMenu,
       }
     }
   }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Link } from "gatsby"
 import { MdLightMode, MdNightlight } from "react-icons/md"
 
@@ -18,9 +18,9 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ onCursor }) => {
   const dispatch = useGlobalDispatchContext()
-  const { currentTheme } = useGlobalStateContext()
+  const { currentTheme, toggleMenu } = useGlobalStateContext()
 
-  const toggleTheme = () => {
+  const handleToggleTheme = () => {
     if (currentTheme === "dark") {
       dispatch({ type: "TOGGLE_THEME", theme: "light" })
     } else {
@@ -44,18 +44,25 @@ const Header: React.FC<HeaderProps> = ({ onCursor }) => {
               W
             </Link>
             <span
-              onClick={toggleTheme}
+              onClick={handleToggleTheme}
               onMouseEnter={() => onCursor("pointer")}
               onMouseLeave={() => onCursor("")}
             >
               {currentTheme === "dark" ? <MdLightMode /> : <MdNightlight />}
             </span>
-            <Link aria-label="Wonder Travel home page" to="/">
+            <Link aria-label="Wonder Главная страница" to="/">
               NDER
             </Link>
           </Logo>
           <Menu>
-            <button aria-label="Menu">
+            <button
+              onClick={() =>
+                dispatch({ type: "TOGGLE_MENU", toggleMenu: !toggleMenu })
+              }
+              onMouseEnter={() => onCursor("pointer")}
+              onMouseLeave={() => onCursor("")}
+              aria-label="Меню/Туры"
+            >
               <span></span>
               <span></span>
             </button>

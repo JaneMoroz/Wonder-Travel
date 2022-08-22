@@ -9,6 +9,7 @@ import { normalize } from "styled-normalize"
 // Components
 import Header from "./header"
 import Cursor from "./customCursor"
+import Navigation from "./navigation"
 
 // Context
 import {
@@ -56,12 +57,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const darkTheme: ThemeType = {
     background: "#2f3e46",
-    text: "#cad2c5",
+    text: "#fff",
     pink: "#f28482",
   }
 
   const lightTheme: ThemeType = {
-    background: "#cad2c5",
+    background: "#fff",
     text: "#2f3e46",
     pink: "#f28482",
   }
@@ -80,6 +81,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <GlobalStyle />
       <Cursor />
       <Header onCursor={onCursor} />
+      <Navigation onCursor={onCursor} />
       <main>{children}</main>
     </ThemeProvider>
   )
