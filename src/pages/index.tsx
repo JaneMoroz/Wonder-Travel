@@ -3,6 +3,8 @@ import Layout from "../components/layout"
 
 // Components
 import HomeBanner from "../components/homePage/HomeBanner"
+import HomeContent from "../components/homePage/HomeContent"
+import HomeFeatured from "../components/homePage/HomeFeatured"
 
 // Context
 import {
@@ -21,6 +23,8 @@ const IndexPage: React.FC = props => {
   return (
     <Layout>
       <HomeBanner onCursor={onCursor} />
+      <HomeContent />
+      <HomeFeatured onCursor={onCursor} />
     </Layout>
   )
 }

@@ -91,7 +91,7 @@ export const NavVideos = styled.div`
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
+    left: -2px;
   }
   .video {
     background: #2f3e46;
