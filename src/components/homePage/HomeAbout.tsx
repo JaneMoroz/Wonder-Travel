@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from "react"
-
-// Scroll behaviour
-import { useInView } from "react-intersection-observer"
-import { motion, useAnimation } from "framer-motion"
+import React, { useState } from "react"
+import { motion } from "framer-motion"
 
 // Styled Components
 import { Container, Flex } from "../../styles/globalStyles"
@@ -26,29 +23,22 @@ type HomeAboutProps = {
 }
 
 const HomeAbout: React.FC<HomeAboutProps> = ({ onCursor }) => {
-  const animation = useAnimation()
-  const [aboutRef, inView] = useInView({
-    triggerOnce: true,
-    rootMargin: "-300px",
-  })
   const [expanded, setExpanded] = useState(0)
-
-  useEffect(() => {
-    if (inView) {
-      animation.start("visible")
-    }
-  }, [animation, inView])
 
   return (
     <HomeAboutSection
-      ref={aboutRef}
-      animate={animation}
+      whileInView="visible"
       initial="hidden"
+      viewport={{ once: true }}
       variants={{
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.6, ease: [0.6, 0.05, -0.01, 0.9] },
+          transition: {
+            delay: 0.5,
+            duration: 0.6,
+            ease: [0.6, 0.05, -0.01, 0.9],
+          },
         },
         hidden: {
           opacity: 0,
@@ -112,7 +102,7 @@ const Accordion: React.FC<AccordionProps> = ({
   return (
     <>
       <AccordionHeader
-        onClick={() => setExpanded(isOpen ? false : id)}
+        onClick={() => setExpanded(isOpen ? -1 : id)}
         onMouseEnter={() => onCursor("hovered")}
         onMouseLeave={() => onCursor("")}
         onHoverStart={() => setHovered(!hovered)}

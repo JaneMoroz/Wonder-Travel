@@ -46,12 +46,12 @@ export const Headline = styled(motion.span)`
 `
 
 // Content  Section
-export const HomeContentSection = styled(motion.div)`
+export const HomeContentSection = styled.div`
   margin-bottom: 200px;
 `
 
 // Content
-export const Content = styled.h2`
+export const Content = styled(motion.h2)`
   width: 70%;
   font-size: 2.3rem;
   font-weight: 400;

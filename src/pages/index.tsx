@@ -13,7 +13,7 @@ import {
   useGlobalStateContext,
 } from "../context/globalContext"
 
-const IndexPage: React.FC = props => {
+const IndexPage: React.FC = () => {
   const { cursorStyles } = useGlobalStateContext()
   const dispatch = useGlobalDispatchContext()
   // Cursor handlers

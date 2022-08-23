@@ -126,6 +126,7 @@ const Navigation: React.FC<NavigationProps> = ({ onCursor }) => {
               <NavVideos>
                 <motion.div
                   animate={{ width: video.show ? 0 : "100%" }}
+                  transition={{ ease: "easeInOut" }}
                   className="reveal"
                 ></motion.div>
                 <div className="video">

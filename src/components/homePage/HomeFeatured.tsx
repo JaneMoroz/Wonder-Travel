@@ -3,10 +3,6 @@ import { Link } from "gatsby"
 import { motion } from "framer-motion"
 import starsVideo from "../../assets/video/fire-small.mp4"
 
-// Scroll behaviour
-import { useInView } from "react-intersection-observer"
-import { useAnimation } from "framer-motion"
-
 // Styled components
 import { Container, Flex } from "../../styles/globalStyles"
 import {
@@ -21,29 +17,22 @@ type HomeFeaturedProps = {
 }
 
 const HomeFeatured: React.FC<HomeFeaturedProps> = ({ onCursor }) => {
-  const animation = useAnimation()
-  const [featuredRef, inView] = useInView({
-    triggerOnce: true,
-    rootMargin: "-300px",
-  })
-
-  useEffect(() => {
-    if (inView) {
-      animation.start("visible")
-    }
-  }, [animation, inView])
   const [hovered, setHovered] = useState(false)
 
   return (
     <HomeFeaturedSection
-      ref={featuredRef}
-      animate={animation}
+      whileInView="visible"
       initial="hidden"
+      viewport={{ once: true }}
       variants={{
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.6, ease: [0.6, 0.05, -0.01, 0.9] },
+          transition: {
+            delay: 0.5,
+            duration: 0.6,
+            ease: [0.6, 0.05, -0.01, 0.9],
+          },
         },
         hidden: {
           opacity: 0,
