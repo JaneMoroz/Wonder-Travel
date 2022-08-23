@@ -10,6 +10,7 @@ import { normalize } from "styled-normalize"
 import Header from "./header"
 import Cursor from "./customCursor"
 import Navigation from "./navigation"
+import Footer from "./footer"
 
 // Context
 import {
@@ -99,6 +100,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       />
       <Navigation onCursor={onCursor} />
       <main>{children}</main>
+      <Footer onCursor={onCursor} />
     </ThemeProvider>
   )
 }

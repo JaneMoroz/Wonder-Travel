@@ -4,7 +4,6 @@ import { motion } from "framer-motion"
 // Styled Components
 import { Container, Flex } from "../../styles/globalStyles"
 import {
-  HomeAboutSection,
   About,
   Services,
   AccordionHeader,
@@ -26,7 +25,7 @@ const HomeAbout: React.FC<HomeAboutProps> = ({ onCursor }) => {
   const [expanded, setExpanded] = useState(0)
 
   return (
-    <HomeAboutSection
+    <motion.div
       whileInView="visible"
       initial="hidden"
       viewport={{ once: true }}
@@ -75,7 +74,7 @@ const HomeAbout: React.FC<HomeAboutProps> = ({ onCursor }) => {
           </Services>
         </Flex>
       </Container>
-    </HomeAboutSection>
+    </motion.div>
   )
 }
 

@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion"
 
 // Styled components
 import { Container, Flex } from "../styles/globalStyles"
+import { FooterContent, FooterSocial } from "../styles/footerStyles"
 import {
   Nav,
   NavHeader,
@@ -21,6 +22,9 @@ import {
   useGlobalStateContext,
   useGlobalDispatchContext,
 } from "../context/globalContext"
+
+// Icons
+import { FaVk, FaOdnoklassniki, FaYandex } from "react-icons/fa"
 
 type NavigationProps = {
   onCursor: (cursorType: string) => void
@@ -122,7 +126,39 @@ const Navigation: React.FC<NavigationProps> = ({ onCursor }) => {
                   })}
                 </ul>
               </NavList>
-              <NavFooter></NavFooter>
+              <NavFooter>
+                <Flex spaceBetween>
+                  <FooterContent>
+                    <p>wonder@travel.ru</p>
+                  </FooterContent>
+                  <FooterContent wider>
+                    <p>+7 (764) 989-77-77</p>
+                  </FooterContent>
+                  <FooterSocial>
+                    <a
+                      onMouseEnter={() => onCursor("pointer")}
+                      onMouseLeave={() => onCursor("")}
+                      href="/"
+                    >
+                      <FaVk />
+                    </a>
+                    <a
+                      onMouseEnter={() => onCursor("pointer")}
+                      onMouseLeave={() => onCursor("")}
+                      href="/"
+                    >
+                      <FaOdnoklassniki />
+                    </a>
+                    <a
+                      onMouseEnter={() => onCursor("pointer")}
+                      onMouseLeave={() => onCursor("")}
+                      href="/"
+                    >
+                      <FaYandex />
+                    </a>
+                  </FooterSocial>
+                </Flex>
+              </NavFooter>
               <NavVideos>
                 <motion.div
                   animate={{ width: video.show ? 0 : "100%" }}

@@ -90,9 +90,6 @@ export const Cursor = styled.div`
   &.pointer {
     border: 4px solid ${props => props.theme.text};
   }
-  &.nav-open {
-    background: ${props => props.theme.background};
-  }
   &.locked {
     background: transparent !important;
     width: 56px;
@@ -100,5 +97,8 @@ export const Cursor = styled.div`
     border: 4px solid ${props => props.theme.pink};
     top: ${props => props.theme.top} !important;
     left: ${props => props.theme.left} !important;
+  }
+  &.nav-open {
+    background: ${props => props.theme.background};
   }
 `
