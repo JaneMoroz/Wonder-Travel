@@ -113,11 +113,11 @@ const Accordion: React.FC<AccordionProps> = ({
       >
         <AccordionIcon>
           <motion.span
-            animate={{ rotate: isOpen || hovered ? 0 : 45, x: 3 }}
+            animate={{ rotate: isOpen || hovered ? 0 : 45, x: 4 }}
             transition={{ duration: 0.2, ease: [0.6, 0.05, -0.01, 0.9] }}
           ></motion.span>
           <motion.span
-            animate={{ rotate: isOpen || hovered ? 0 : -45, x: -3 }}
+            animate={{ rotate: isOpen || hovered ? 0 : -45, x: -4 }}
             transition={{ duration: 0.2, ease: [0.6, 0.05, -0.01, 0.9] }}
           ></motion.span>
         </AccordionIcon>

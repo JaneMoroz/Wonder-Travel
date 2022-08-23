@@ -16,6 +16,7 @@ import {
 const IndexPage: React.FC = () => {
   const { cursorStyles } = useGlobalStateContext()
   const dispatch = useGlobalDispatchContext()
+
   // Cursor handlers
   const onCursor = (cursorType: string) => {
     cursorType = cursorStyles.includes(cursorType) ? cursorType : ""

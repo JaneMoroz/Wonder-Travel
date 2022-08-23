@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
 import { motion } from "framer-motion"
-import starsVideo from "../../assets/video/fire-small.mp4"
+import starsVideo from "../../assets/video/stars-falling.mp4"
+import activeVideo from "../../assets/video/hiking-small.mp4"
 
 // Styled components
 import { Container, Flex } from "../../styles/globalStyles"
 import {
   HomeFeaturedSection,
   FeaturedContent,
-  FeaturedVideo,
   FeaturedTours,
+  FeaturedVideo,
 } from "../../styles/homeStyles"
 
 type HomeFeaturedProps = {
@@ -78,7 +79,14 @@ const HomeFeatured: React.FC<HomeFeaturedProps> = ({ onCursor }) => {
             </h2>
           </FeaturedContent>
           <FeaturedVideo>
-            <video loop autoPlay muted src={starsVideo} />
+            <video
+              height="100%"
+              width="100%"
+              loop
+              autoPlay
+              muted
+              src={starsVideo}
+            />
           </FeaturedVideo>
         </Link>
       </Container>

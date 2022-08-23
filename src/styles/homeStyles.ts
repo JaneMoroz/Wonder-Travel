@@ -64,8 +64,8 @@ export const HomeFeaturedSection = styled(motion.div)`
   margin-bottom: 200px;
   position: relative;
   a {
-    margin-bottom: 200px;
     position: relative;
+    margin-bottom: 200px;
     display: block;
   }
 `
@@ -125,8 +125,6 @@ export const FeaturedVideo = styled.div`
   display: block;
   overflow: hidden;
   video {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
   }
 `
