@@ -17,7 +17,13 @@ import {
   useGlobalDispatchContext,
 } from "../context/globalContext"
 
-type ThemeType = { background: string; text: string; pink: string }
+type ThemeType = {
+  background: string
+  text: string
+  pink: string
+  left: string
+  top: string
+}
 
 const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
   ${normalize}
@@ -55,16 +61,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   `)
 
+  const [hamburgerPosition, setHamburgerPosition] = useState({ x: 0, y: 0 })
+
   const darkTheme: ThemeType = {
     background: "#2f3e46",
     text: "#fff",
     pink: "#f28482",
+    left: `${hamburgerPosition.x}px`,
+    top: `${hamburgerPosition.y}px`,
   }
 
   const lightTheme: ThemeType = {
     background: "#fff",
     text: "#2f3e46",
     pink: "#f28482",
+    left: `${hamburgerPosition.x}px`,
+    top: `${hamburgerPosition.y}px`,
   }
 
   const { currentTheme, cursorStyles } = useGlobalStateContext()
@@ -80,7 +92,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <ThemeProvider theme={currentTheme === "dark" ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Cursor />
-      <Header onCursor={onCursor} />
+      <Header
+        onCursor={onCursor}
+        hamburgerPosition={hamburgerPosition}
+        setHamburgerPosition={setHamburgerPosition}
+      />
       <Navigation onCursor={onCursor} />
       <main>{children}</main>
     </ThemeProvider>

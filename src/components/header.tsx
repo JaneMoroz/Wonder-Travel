@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import { Link } from "gatsby"
 import { MdLightMode, MdNightlight } from "react-icons/md"
 
@@ -12,13 +12,24 @@ import {
   useGlobalDispatchContext,
 } from "../context/globalContext"
 
+// Custom Hooks
+import useElementPosition from "../hooks/useElementPosition"
+
 type HeaderProps = {
   onCursor: (cursorType: string) => void
+  hamburgerPosition: { x: number; y: number }
+  setHamburgerPosition: React.Dispatch<{ x: number; y: number }>
 }
 
-const Header: React.FC<HeaderProps> = ({ onCursor }) => {
+const Header: React.FC<HeaderProps> = ({
+  onCursor,
+  hamburgerPosition,
+  setHamburgerPosition,
+}) => {
   const dispatch = useGlobalDispatchContext()
   const { currentTheme, toggleMenu } = useGlobalStateContext()
+  const hamburgerMenu = useRef(null)
+  const position = useElementPosition(hamburgerMenu)
 
   const handleToggleTheme = () => {
     if (currentTheme === "dark") {
@@ -26,6 +37,11 @@ const Header: React.FC<HeaderProps> = ({ onCursor }) => {
     } else {
       dispatch({ type: "TOGGLE_THEME", theme: "dark" })
     }
+  }
+
+  const handleMenuOver = () => {
+    onCursor("locked")
+    setHamburgerPosition({ x: position.x, y: position.y + 72 })
   }
 
   return (
@@ -54,15 +70,15 @@ const Header: React.FC<HeaderProps> = ({ onCursor }) => {
               NDER
             </Link>
           </Logo>
-          <Menu>
-            <button
-              onClick={() =>
-                dispatch({ type: "TOGGLE_MENU", toggleMenu: !toggleMenu })
-              }
-              onMouseEnter={() => onCursor("pointer")}
-              onMouseLeave={() => onCursor("")}
-              aria-label="Меню/Туры"
-            >
+          <Menu
+            ref={hamburgerMenu}
+            onClick={() =>
+              dispatch({ type: "TOGGLE_MENU", toggleMenu: !toggleMenu })
+            }
+            onMouseEnter={handleMenuOver}
+            onMouseLeave={() => onCursor("")}
+          >
+            <button aria-label="Меню/Туры">
               <span></span>
               <span></span>
             </button>

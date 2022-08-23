@@ -29,7 +29,7 @@ type Action =
 const intitalState = {
   currentTheme: "",
   cursorType: "",
-  cursorStyles: ["pointer", "hovered"],
+  cursorStyles: ["pointer", "hovered", "locked"],
   toggleMenu: false,
 } as GlobalStateContextType
 
