@@ -39,6 +39,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
     font-size: 16px;
   }
 
+
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background:  ${props => props.theme.background};
@@ -65,16 +66,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [hamburgerPosition, setHamburgerPosition] = useState({ x: 0, y: 0 })
 
   const darkTheme: ThemeType = {
-    background: "#2f3e46",
-    text: "#fff",
+    background: "#555b6e",
+    text: "#faf9f9",
     pink: "#f28482",
     left: `${hamburgerPosition.x}px`,
     top: `${hamburgerPosition.y}px`,
   }
 
   const lightTheme: ThemeType = {
-    background: "#fff",
-    text: "#2f3e46",
+    background: "#faf9f9",
+    text: "#89b0ae",
     pink: "#f28482",
     left: `${hamburgerPosition.x}px`,
     top: `${hamburgerPosition.y}px`,

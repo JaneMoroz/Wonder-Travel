@@ -7,7 +7,7 @@ export const Banner = styled.div`
   height: 100vh;
   width: 100%;
   position: relative;
-  margin-bottom: 296px;
+  margin-bottom: 196px;
 `
 
 // Video
@@ -25,6 +25,7 @@ export const Canvas = styled.canvas`
   top: 0;
   left: 0;
   height: 100%;
+  width: 100%;
   display: block;
 `
 
@@ -40,9 +41,17 @@ export const BannerTitle = styled.h1`
 // Headline
 export const Headline = styled(motion.span)`
   display: block;
-  font-size: 10rem;
+  font-size: 8rem;
   font-weight: 900;
   line-height: 0.76;
+
+  @media only screen and (max-width: 56.25em) {
+    font-size: 5.6rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: 3.2rem;
+  }
 `
 
 // Content  Section

@@ -12,6 +12,24 @@ export const HeaderNav = styled(motion.div)`
 `
 
 export const Logo = styled.div`
+  position: relative;
+  h1 {
+    position: absolute;
+    top: -1rem;
+    left: 5rem;
+    font-size: 2.4em;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: ${props => props.theme.pink};
+    opacity: 0.7;
+    z-index: -1;
+
+    @media only screen and (max-width: 37.5em) {
+      font-size: 1.8rem;
+      top: -0.4rem;
+      left: 5rem;
+    }
+  }
   a {
     font-size: 1.8rem;
     font-weight: 800;
@@ -29,11 +47,33 @@ export const Logo = styled.div`
   }
 `
 
+export const LanguageToggle = styled.div`
+  button {
+    transform-origin: center;
+    border: none;
+    padding: 20px 10px;
+    background: none;
+    outline: none;
+    .icon {
+      font-size: 2.4rem;
+      display: block;
+      color: ${props => props.theme.text};
+      margin: 8px;
+
+      @media only screen and (max-width: 37.5em) {
+        font-size: 1.8rem;
+        top: -0.4rem;
+        left: 5rem;
+      }
+    }
+  }
+`
+
 export const Menu = styled.div`
   button {
     transform-origin: center;
     border: none;
-    padding: 20px;
+    padding: 20px 10px;
     background: none;
     outline: none;
     span {
@@ -42,6 +82,11 @@ export const Menu = styled.div`
       display: block;
       background: ${props => props.theme.text};
       margin: 8px;
+
+      @media only screen and (max-width: 37.5em) {
+        width: 24px;
+        height: 6px;
+      }
     }
   }
 `

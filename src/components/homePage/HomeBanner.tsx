@@ -50,7 +50,8 @@ const HomeBanner: React.FC<HomeBannerProps> = ({ onCursor }) => {
         if (renderingCtx) {
           renderingCtx.globalCompositeOperation = "source-over"
           renderingCtx.fillStyle =
-            currentTheme === "dark" ? "#2f3e46" : "#ffffff"
+            currentTheme === "dark" ? "#555b6e" : "#faf9f9"
+          renderingCtx.filter = "opacity(90%)"
           renderingCtx.fillRect(0, 0, size.width, size.height)
 
           const _mouseover = (e: MouseEvent): void => {
@@ -95,8 +96,8 @@ const HomeBanner: React.FC<HomeBannerProps> = ({ onCursor }) => {
           renderingElement.addEventListener("click", _mouseclick)
 
           return () => {
-            drawingElement = null
-            drawingElement! = renderingElement!.cloneNode() as HTMLCanvasElement
+            // Clear canvas, remove event listeners
+            renderingCtx.clearRect(0, 0, size.width, size.height)
             renderingElement!.removeEventListener("mouseover", _mouseover)
             renderingElement!.removeEventListener("mouseup", _mouseup)
             renderingElement!.removeEventListener("mousemove", _mousemove)

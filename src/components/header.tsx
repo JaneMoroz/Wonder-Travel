@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { MdLightMode, MdNightlight } from "react-icons/md"
 
 // Styled components
-import { HeaderNav, Logo, Menu } from "../styles/headerStyles"
+import { HeaderNav, Logo, Menu, LanguageToggle } from "../styles/headerStyles"
 import { Container, Flex } from "../styles/globalStyles"
 
 // Context
@@ -15,17 +15,16 @@ import {
 // Custom Hooks
 import useElementPosition from "../hooks/useElementPosition"
 
+// Icons
+import { MdOutlineLanguage } from "react-icons/md"
+
 type HeaderProps = {
   onCursor: (cursorType: string) => void
   hamburgerPosition: { x: number; y: number }
   setHamburgerPosition: React.Dispatch<{ x: number; y: number }>
 }
 
-const Header: React.FC<HeaderProps> = ({
-  onCursor,
-  hamburgerPosition,
-  setHamburgerPosition,
-}) => {
+const Header: React.FC<HeaderProps> = ({ onCursor, setHamburgerPosition }) => {
   const dispatch = useGlobalDispatchContext()
   const { currentTheme, toggleMenu } = useGlobalStateContext()
   const hamburgerMenu = useRef(null)
@@ -56,6 +55,7 @@ const Header: React.FC<HeaderProps> = ({
             onMouseEnter={() => onCursor("hovered")}
             onMouseLeave={() => onCursor("")}
           >
+            <h1>Travel</h1>
             <Link aria-label="Wonder Travel home page" to="/">
               W
             </Link>
@@ -70,19 +70,26 @@ const Header: React.FC<HeaderProps> = ({
               NDER
             </Link>
           </Logo>
-          <Menu
-            ref={hamburgerMenu}
-            onClick={() =>
-              dispatch({ type: "TOGGLE_MENU", toggleMenu: !toggleMenu })
-            }
-            onMouseEnter={handleMenuOver}
-            onMouseLeave={() => onCursor("")}
-          >
-            <button aria-label="Меню/Туры">
-              <span></span>
-              <span></span>
-            </button>
-          </Menu>
+          <Flex>
+            <LanguageToggle>
+              <button>
+                <MdOutlineLanguage className="icon" />
+              </button>
+            </LanguageToggle>
+            <Menu
+              ref={hamburgerMenu}
+              onClick={() =>
+                dispatch({ type: "TOGGLE_MENU", toggleMenu: !toggleMenu })
+              }
+              onMouseEnter={handleMenuOver}
+              onMouseLeave={() => onCursor("")}
+            >
+              <button aria-label="Меню/Туры">
+                <span></span>
+                <span></span>
+              </button>
+            </Menu>
+          </Flex>
         </Flex>
       </Container>
     </HeaderNav>
