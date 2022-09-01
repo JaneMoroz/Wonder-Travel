@@ -66,6 +66,16 @@ export const Content = styled(motion.h2)`
   font-weight: 400;
   margin-left: 124px;
   color: ${props => props.theme.text};
+
+  @media only screen and (max-width: 56.25em) {
+    margin-left: 0;
+    width: 90%;
+    font-size: 2rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: 1.8rem;
+  }
 `
 
 // Home featured section
@@ -86,14 +96,30 @@ export const FeaturedContent = styled(motion.div)`
   padding: 56px 124px;
   box-sizing: border-box;
   color: ${props => props.theme.text};
+
+  @media only screen and (max-width: 56.25em) {
+    padding: 32px 56px;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 24px 16px;
+  }
+
   h3 {
     font-size: 1.4rem;
   }
   .meta {
     display: flex;
+    @media only screen and (max-width: 37.5em) {
+      flex-direction: column;
+    }
     h4 {
       &:last-child {
         margin-left: 1rem;
+
+        @media only screen and (max-width: 37.5em) {
+          margin-left: 0;
+        }
       }
     }
   }
@@ -104,6 +130,16 @@ export const FeaturedContent = styled(motion.div)`
     font-weight: 900;
     line-height: 90px;
     margin: 0;
+
+    @media only screen and (max-width: 56.25em) {
+      font-size: 72px;
+      left: 16px;
+    }
+
+    @media only screen and (max-width: 37.5em) {
+      font-size: 44px;
+      line-height: 60px;
+    }
 
     .arrow {
       width: 120px;
@@ -116,6 +152,10 @@ export const FeaturedContent = styled(motion.div)`
         top: 16px;
         left: -48px;
         width: 108px;
+
+        @media only screen and (max-width: 37.5em) {
+          width: 60px;
+        }
         path {
           fill: ${props => props.theme.text};
         }
@@ -134,6 +174,8 @@ export const FeaturedVideo = styled.div`
   display: block;
   overflow: hidden;
   video {
+    height: 100%;
+    width: 100%;
     object-fit: cover;
   }
 `
