@@ -6,12 +6,10 @@ import { FooterNav, FooterContent, FooterSocial } from "../styles/footerStyles"
 
 // Icons
 import { FaVk, FaOdnoklassniki, FaYandex } from "react-icons/fa"
+import { useGlobalActionContext } from "../context/globalContext"
 
-type FooterProps = {
-  onCursor: (cursorType: string) => void
-}
-
-const Footer: React.FC<FooterProps> = ({ onCursor }) => {
+const Footer: React.FC = () => {
+  const { onCursor } = useGlobalActionContext()
   return (
     <FooterNav>
       <Container>

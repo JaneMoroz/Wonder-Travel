@@ -9,13 +9,13 @@ import HomeAbout from "../components/homePage/HomeAbout"
 
 // Context
 import {
-  useGlobalDispatchContext,
+  useGlobalActionContext,
   useGlobalStateContext,
 } from "../context/globalContext"
 
 const IndexPage: React.FC = () => {
   const { cursorStyles } = useGlobalStateContext()
-  const dispatch = useGlobalDispatchContext()
+  const { dispatch } = useGlobalActionContext()
 
   // Cursor handlers
   const onCursor = (cursorType: string) => {

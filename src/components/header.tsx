@@ -9,7 +9,7 @@ import { Container, Flex } from "../styles/globalStyles"
 // Context
 import {
   useGlobalStateContext,
-  useGlobalDispatchContext,
+  useGlobalActionContext,
 } from "../context/globalContext"
 
 // Custom Hooks
@@ -19,13 +19,12 @@ import useElementPosition from "../hooks/useElementPosition"
 import { MdOutlineLanguage } from "react-icons/md"
 
 type HeaderProps = {
-  onCursor: (cursorType: string) => void
   hamburgerPosition: { x: number; y: number }
   setHamburgerPosition: React.Dispatch<{ x: number; y: number }>
 }
 
-const Header: React.FC<HeaderProps> = ({ onCursor, setHamburgerPosition }) => {
-  const dispatch = useGlobalDispatchContext()
+const Header: React.FC<HeaderProps> = ({ setHamburgerPosition }) => {
+  const { dispatch, onCursor } = useGlobalActionContext()
   const { currentTheme, toggleMenu } = useGlobalStateContext()
   const hamburgerMenu = useRef(null)
   const position = useElementPosition(hamburgerMenu)

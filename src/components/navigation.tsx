@@ -20,23 +20,19 @@ import { tours } from "../assets/data/tours"
 // Context
 import {
   useGlobalStateContext,
-  useGlobalDispatchContext,
+  useGlobalActionContext,
 } from "../context/globalContext"
 
 // Icons
 import { FaVk, FaOdnoklassniki, FaYandex } from "react-icons/fa"
 
-type NavigationProps = {
-  onCursor: (cursorType: string) => void
-}
-
-const Navigation: React.FC<NavigationProps> = ({ onCursor }) => {
+const Navigation: React.FC = () => {
   const [video, setVideo] = useState({
     show: false,
     video: tours[0].video,
     key: "0",
   })
-  const dispatch = useGlobalDispatchContext()
+  const { dispatch, onCursor } = useGlobalActionContext()
   const { toggleMenu } = useGlobalStateContext()
 
   return (

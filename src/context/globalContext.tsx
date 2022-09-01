@@ -12,6 +12,11 @@ type GlobalStateContextType = {
   toggleMenu: boolean
 }
 
+type GlobalActionContextType = {
+  dispatch: React.Dispatch<Action>
+  onCursor: (cursorType: string) => void
+}
+
 type Action =
   | {
       type: "TOGGLE_THEME"
@@ -34,7 +39,7 @@ const intitalState = {
 } as GlobalStateContextType
 
 const GlobalStateContext = createContext({} as GlobalStateContextType)
-const GlobalDispatchContext = createContext({} as React.Dispatch<Action>)
+const GlobalActionContext = createContext({} as GlobalActionContextType)
 
 const globalReducer = (state: GlobalStateContextType, action: Action) => {
   switch (action.type) {
@@ -73,15 +78,21 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     saveStorageTheme(state.currentTheme)
   }, [state.currentTheme])
 
+  // Cursor handlers
+  const onCursor = (cursorType: string) => {
+    cursorType = state.cursorStyles.includes(cursorType) ? cursorType : ""
+    dispatch({ type: "CURSOR_TYPE", cursorType })
+  }
+
   return (
-    <GlobalDispatchContext.Provider value={dispatch}>
+    <GlobalActionContext.Provider value={{ dispatch, onCursor }}>
       <GlobalStateContext.Provider value={state}>
         {children}
       </GlobalStateContext.Provider>
-    </GlobalDispatchContext.Provider>
+    </GlobalActionContext.Provider>
   )
 }
 
 // Custom hooks to use dispatch and state
 export const useGlobalStateContext = () => useContext(GlobalStateContext)
-export const useGlobalDispatchContext = () => useContext(GlobalDispatchContext)
+export const useGlobalActionContext = () => useContext(GlobalActionContext)

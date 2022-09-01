@@ -15,7 +15,7 @@ import Footer from "./footer"
 // Context
 import {
   useGlobalStateContext,
-  useGlobalDispatchContext,
+  useGlobalActionContext,
 } from "../context/globalContext"
 
 type ThemeType = {
@@ -82,26 +82,25 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }
 
   const { currentTheme, cursorStyles } = useGlobalStateContext()
-  const dispatch = useGlobalDispatchContext()
+  // const {onCursor} = useGlobalActionContext()
 
-  // Cursor handlers
-  const onCursor = (cursorType: string) => {
-    cursorType = cursorStyles.includes(cursorType) ? cursorType : ""
-    dispatch({ type: "CURSOR_TYPE", cursorType })
-  }
+  // // Cursor handlers
+  // const onCursor = (cursorType: string) => {
+  //   cursorType = cursorStyles.includes(cursorType) ? cursorType : ""
+  //   dispatch({ type: "CURSOR_TYPE", cursorType })
+  // }
 
   return (
     <ThemeProvider theme={currentTheme === "dark" ? darkTheme : lightTheme}>
       <GlobalStyle />
       <Cursor />
       <Header
-        onCursor={onCursor}
         hamburgerPosition={hamburgerPosition}
         setHamburgerPosition={setHamburgerPosition}
       />
-      <Navigation onCursor={onCursor} />
+      <Navigation />
       <main>{children}</main>
-      <Footer onCursor={onCursor} />
+      <Footer />
     </ThemeProvider>
   )
 }
