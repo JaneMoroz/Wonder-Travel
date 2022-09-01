@@ -58,20 +58,24 @@ const Header: React.FC<HeaderProps> = ({ setHamburgerPosition }) => {
             <Link aria-label="Wonder Travel home page" to="/">
               W
             </Link>
-            <span
+            <button
               onClick={handleToggleTheme}
               onMouseEnter={() => onCursor("pointer")}
               onMouseLeave={() => onCursor("")}
             >
               {currentTheme === "dark" ? <MdLightMode /> : <MdNightlight />}
-            </span>
+            </button>
             <Link aria-label="Wonder Главная страница" to="/">
               NDER
             </Link>
           </Logo>
           <Flex>
             <LanguageToggle>
-              <button>
+              <button
+                onMouseEnter={() => onCursor("pointer")}
+                onMouseLeave={() => onCursor("")}
+                aria-label="изменить язык"
+              >
                 <MdOutlineLanguage className="icon" />
               </button>
             </LanguageToggle>

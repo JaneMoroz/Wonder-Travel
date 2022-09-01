@@ -11,6 +11,11 @@ export const Container = styled.div<ContainerProps>`
   position: relative;
   width: auto;
   height: 100%;
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 0 0 0 32px;
+  }
+
   @media (min-width: 1024px) {
     max-width: 960px;
   }

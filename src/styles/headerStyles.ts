@@ -35,7 +35,9 @@ export const Logo = styled.div`
     font-weight: 800;
     color: ${props => props.theme.text};
   }
-  span {
+  button {
+    background: none;
+    border: none;
     color: ${props => props.theme.pink};
     margin: 0 2px;
     display: inline-flex;
