@@ -14,14 +14,14 @@ import {
 import useWindowSize from "../../hooks/useWindowSize"
 
 // Context
-import { useGlobalStateContext } from "../../context/globalContext"
+import {
+  useGlobalActionContext,
+  useGlobalStateContext,
+} from "../../context/globalContext"
 
-type HomeBannerProps = {
-  onCursor: (cursorType: string) => void
-}
-
-const HomeBanner: React.FC<HomeBannerProps> = ({ onCursor }) => {
+const HomeBanner: React.FC = () => {
   const size = useWindowSize()
+  const { onCursor } = useGlobalActionContext()
   const { currentTheme } = useGlobalStateContext()
   let canvas = useRef<HTMLCanvasElement>(null)
 

@@ -16,13 +16,16 @@ import {
 import { services } from "../../assets/data/services"
 
 // Context
-import { useGlobalStateContext } from "../../context/globalContext"
+import {
+  useGlobalActionContext,
+  useGlobalStateContext,
+} from "../../context/globalContext"
 
-type HomeAboutProps = {
-  onCursor: (cursorType: string) => void
-}
+// Components
+import AllToursButton from "../allToursButton"
 
-const HomeAbout: React.FC<HomeAboutProps> = ({ onCursor }) => {
+const HomeAbout: React.FC = () => {
+  const { onCursor } = useGlobalActionContext()
   const [expanded, setExpanded] = useState(0)
 
   return (
@@ -78,9 +81,7 @@ const HomeAbout: React.FC<HomeAboutProps> = ({ onCursor }) => {
       <Container>
         <ToursButton>
           <Flex flexEnd>
-            <button>
-              <span>Все туры</span>
-            </button>
+            <AllToursButton />
           </Flex>
         </ToursButton>
       </Container>
