@@ -4,6 +4,7 @@ A website for the travel agency ✈🌋🏕
 ## 🚀 Technologies used:
 <img src="https://img.shields.io/badge/Gatsby-%23663399.svg?style=for-the-badge&logo=gatsby&logoColor=white" alt="Gtasby icon" height="30" /><img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React icon" height="30" /><img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="Typescript icon" height="30" /><img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" alt="Styled Components" height="30" />
 
+- [x] Custom cursor
 - [x] Framer Motion
 - [x] Responsive Design
 - [x] Local Storage
