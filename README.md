@@ -6,7 +6,7 @@ A website for the travel agency ✈🌋🏕
 
 - [x] Custom cursor
 - [x] Framer Motion
-- [x] Responsive Design
+- [ ] Responsive Design
 - [x] Local Storage
 - [x] Light/Dark Theme
 - [ ] Page Transition Animation
