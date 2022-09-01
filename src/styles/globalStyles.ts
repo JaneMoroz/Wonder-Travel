@@ -13,7 +13,7 @@ export const Container = styled.div<ContainerProps>`
   height: 100%;
 
   @media only screen and (max-width: 37.5em) {
-    padding: 0 0 0 32px;
+    padding: 0 32px;
   }
 
   @media (min-width: 1024px) {
@@ -41,6 +41,7 @@ type FlexProps = {
   alignTop?: boolean
   noHeight?: boolean
   aboutSection?: boolean
+  homeFooter?: boolean
 }
 
 export const Flex = styled.div<FlexProps>`
@@ -78,6 +79,15 @@ export const Flex = styled.div<FlexProps>`
       @media only screen and (max-width: 56.25em) {
         flex-direction: column;
         row-gap: 20px;
+      }
+    `}
+  ${props =>
+    props.homeFooter &&
+    css`
+      @media only screen and (max-width: 37.5em) {
+        flex-direction: column;
+        row-gap: 20px;
+        align-items: flex-start;
       }
     `}
 `

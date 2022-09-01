@@ -124,9 +124,6 @@ const Navigation: React.FC = () => {
               </NavList>
               <NavFooter>
                 <Flex spaceBetween>
-                  <FooterContent>
-                    <p>wonder@travel.ru</p>
-                  </FooterContent>
                   <FooterContent wider>
                     <p>+7 (764) 989-77-77</p>
                   </FooterContent>

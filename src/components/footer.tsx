@@ -13,12 +13,9 @@ const Footer: React.FC = () => {
   return (
     <FooterNav>
       <Container>
-        <Flex spaceBetween>
+        <Flex spaceBetween homeFooter>
           <FooterContent>
             <p>+7 (764) 989-77-77</p>
-            <p>wonder@travel.ru</p>
-          </FooterContent>
-          <FooterContent wider>
             <p>Центральная ул., 1</p>
             <p>г. Петропавловск-Камчатский</p>
           </FooterContent>

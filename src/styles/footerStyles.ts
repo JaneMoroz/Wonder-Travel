@@ -1,9 +1,8 @@
 import styled, { css } from "styled-components"
-import { motion } from "framer-motion"
 
 export const FooterNav = styled.div`
-  height: 300px;
-  margin-top: 296px;
+  margin-top: 196px;
+  margin-bottom: 32px;
 `
 type FooterContentProps = {
   wider?: boolean
@@ -15,6 +14,15 @@ export const FooterContent = styled.div<FooterContentProps>`
   font-weight: 600;
   line-height: 0.5rem;
   flex: 1;
+
+  @media only screen and (max-width: 56.25em) {
+    font-size: 1.6rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    font-size: 1.4rem;
+  }
+
   ${props =>
     props.wider &&
     css`
