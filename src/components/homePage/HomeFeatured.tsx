@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import { Link } from "gatsby"
 import { motion } from "framer-motion"
 import starsVideo from "../../assets/video/stars-falling.mp4"
@@ -9,15 +9,14 @@ import { Container, Flex } from "../../styles/globalStyles"
 import {
   HomeFeaturedSection,
   FeaturedContent,
-  FeaturedTours,
   FeaturedVideo,
 } from "../../styles/homeStyles"
 
-type HomeFeaturedProps = {
-  onCursor: (cursorType: string) => void
-}
+// Context
+import { useGlobalActionContext } from "../../context/globalContext"
 
-const HomeFeatured: React.FC<HomeFeaturedProps> = ({ onCursor }) => {
+const HomeFeatured: React.FC = () => {
+  const { onCursor } = useGlobalActionContext()
   const [hovered, setHovered] = useState(false)
 
   return (
@@ -89,15 +88,6 @@ const HomeFeatured: React.FC<HomeFeaturedProps> = ({ onCursor }) => {
             />
           </FeaturedVideo>
         </Link>
-      </Container>
-      <Container>
-        <FeaturedTours>
-          <Flex flexEnd>
-            <button>
-              <span>Все туры</span>
-            </button>
-          </Flex>
-        </FeaturedTours>
       </Container>
     </HomeFeaturedSection>
   )

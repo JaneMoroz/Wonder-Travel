@@ -180,68 +180,45 @@ export const FeaturedVideo = styled.div`
   }
 `
 
-// Featured tours
-export const FeaturedTours = styled.div`
-  margin-top: 200px;
-  button {
-    background: ${props => props.theme.pink};
-    color: #fff;
-    position: relative;
-    padding: 20px;
-    display: block;
-    text-align: left;
-    font-size: 1.4rem;
-    line-height: 1;
-    font-weight: 600;
-    border: none;
-    span {
-      margin-right: 100px;
-      display: block;
-    }
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: 20px;
-      width: 35px;
-      height: 7px;
-      display: block;
-      background: #fff;
-      transform: translateY(-50%);
-    }
-    &:before {
-      margin-top: -8px;
-    }
-    &:after {
-      margin-top: 8px;
-    }
-  }
-`
-
 // About
 
 export const About = styled.div`
-  width: 100%;
   h2 {
     width: 60%;
     font-size: 2.3rem;
     font-weight: 400;
     margin-left: 124px;
     color: ${props => props.theme.text};
+
+    @media only screen and (max-width: 56.25em) {
+      margin-left: 0;
+      width: 90%;
+      font-size: 2rem;
+    }
+
+    @media only screen and (max-width: 37.5em) {
+      font-size: 1.8rem;
+    }
   }
   p {
     max-width: 440px;
-    font-size: 1rem;
-    line-height: 1.6rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
     margin-left: 124px;
     color: ${props => props.theme.text};
+
+    @media only screen and (max-width: 56.25em) {
+      max-width: 90%;
+      margin-left: 0;
+    }
   }
 `
 
 export const Services = styled.div`
   h3 {
     color: ${props => props.theme.text};
+    font-size: 2.3rem;
+    font-weight: 400;
   }
 `
 
@@ -280,5 +257,44 @@ export const AccordionContent = styled(motion.div)`
     color: ${props => props.theme.pink};
     display: block;
     font-weight: 300;
+  }
+`
+
+// Featured tours
+export const ToursButton = styled.div`
+  margin-top: 36px;
+  button {
+    background: ${props => props.theme.pink};
+    color: #fff;
+    position: relative;
+    padding: 20px;
+    display: block;
+    text-align: left;
+    font-size: 1.4rem;
+    line-height: 1;
+    font-weight: 600;
+    border: none;
+    span {
+      margin-right: 100px;
+      display: block;
+    }
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      width: 35px;
+      height: 7px;
+      display: block;
+      background: #fff;
+      transform: translateY(-50%);
+    }
+    &:before {
+      margin-top: -8px;
+    }
+    &:after {
+      margin-top: 8px;
+    }
   }
 `

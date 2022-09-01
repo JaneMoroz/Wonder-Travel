@@ -9,6 +9,7 @@ import {
   AccordionHeader,
   AccordionContent,
   AccordionIcon,
+  ToursButton,
 } from "../../styles/homeStyles"
 
 // Services
@@ -46,7 +47,7 @@ const HomeAbout: React.FC<HomeAboutProps> = ({ onCursor }) => {
       }}
     >
       <Container>
-        <Flex alignTop>
+        <Flex alignTop aboutSection>
           <About>
             <h2>Путешествия — это не отдых, это стиль жизни.</h2>
             <p>
@@ -73,6 +74,15 @@ const HomeAbout: React.FC<HomeAboutProps> = ({ onCursor }) => {
             ))}
           </Services>
         </Flex>
+      </Container>
+      <Container>
+        <ToursButton>
+          <Flex flexEnd>
+            <button>
+              <span>Все туры</span>
+            </button>
+          </Flex>
+        </ToursButton>
       </Container>
     </motion.div>
   )

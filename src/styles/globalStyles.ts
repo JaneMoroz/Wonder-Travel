@@ -40,6 +40,7 @@ type FlexProps = {
   flexEnd?: boolean
   alignTop?: boolean
   noHeight?: boolean
+  aboutSection?: boolean
 }
 
 export const Flex = styled.div<FlexProps>`
@@ -69,6 +70,15 @@ export const Flex = styled.div<FlexProps>`
     props.noHeight &&
     css`
       height: 0;
+    `}
+
+  ${props =>
+    props.aboutSection &&
+    css`
+      @media only screen and (max-width: 56.25em) {
+        flex-direction: column;
+        row-gap: 20px;
+      }
     `}
 `
 
