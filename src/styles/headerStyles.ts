@@ -38,6 +38,7 @@ export const Logo = styled.div`
   button {
     background: none;
     border: none;
+    outline: none;
     color: ${props => props.theme.pink};
     margin: 0 2px;
     display: inline-flex;
