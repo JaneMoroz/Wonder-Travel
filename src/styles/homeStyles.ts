@@ -215,6 +215,7 @@ export const About = styled.div`
 `
 
 export const Services = styled.div`
+  min-height: 520px;
   h3 {
     color: ${props => props.theme.text};
     font-size: 2.3rem;
