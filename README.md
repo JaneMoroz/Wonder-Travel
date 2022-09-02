@@ -6,7 +6,7 @@ A website for the travel agency ✈🌋🏕
 
 - [x] Custom cursor
 - [x] Framer Motion
-- [x] Responsive Design
+- [ ] Responsive Design
 - [x] Local Storage
 - [x] Light/Dark Theme
 - [ ] Page Transition Animation
@@ -38,6 +38,6 @@ Builds the app for production.<br />
 ### About Section (Light Theme)
 <img src="https://i.ibb.co/3RDrn0t/wonder-travel-services.jpg" alt="About Section (Light Theme)" />
 
-### Footer Section (Dark Theme)
+### Navigation (Light Theme)
 <img src="https://i.ibb.co/9ydjPg0/wonder-travel-navigation.jpg" alt="Navigation (Light Theme)" />
 
