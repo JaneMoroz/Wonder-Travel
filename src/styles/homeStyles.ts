@@ -114,6 +114,8 @@ export const FeaturedContent = styled(motion.div)`
       flex-direction: column;
     }
     h4 {
+      padding: 5px 0;
+      margin: 0;
       &:last-child {
         margin-left: 1rem;
 
@@ -154,7 +156,7 @@ export const FeaturedContent = styled(motion.div)`
         width: 108px;
 
         @media only screen and (max-width: 37.5em) {
-          width: 60px;
+          width: 100px;
         }
         path {
           fill: ${props => props.theme.text};

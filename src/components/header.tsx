@@ -59,6 +59,7 @@ const Header: React.FC<HeaderProps> = ({ setHamburgerPosition }) => {
               W
             </Link>
             <button
+              aria-label="Переключатель темы"
               onClick={handleToggleTheme}
               onMouseEnter={() => onCursor("pointer")}
               onMouseLeave={() => onCursor("")}

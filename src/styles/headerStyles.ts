@@ -40,7 +40,8 @@ export const Logo = styled.div`
     border: none;
     outline: none;
     color: ${props => props.theme.pink};
-    margin: 0 2px;
+    margin: 0;
+    padding: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
