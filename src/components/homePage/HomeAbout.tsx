@@ -78,13 +78,13 @@ const HomeAbout: React.FC = () => {
           </Services>
         </Flex>
       </Container>
-      <Container>
+      {/* <Container>
         <ToursButton>
           <Flex flexEnd>
             <AllToursButton />
           </Flex>
         </ToursButton>
-      </Container>
+      </Container> */}
     </motion.div>
   )
 }

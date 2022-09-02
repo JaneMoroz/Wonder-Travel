@@ -6,6 +6,7 @@ import HomeBanner from "../components/homePage/HomeBanner"
 import HomeContent from "../components/homePage/HomeContent"
 import HomeFeatured from "../components/homePage/HomeFeatured"
 import HomeAbout from "../components/homePage/HomeAbout"
+import HomeTours from "../components/homePage/HomeTours"
 
 const IndexPage: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const IndexPage: React.FC = () => {
       <HomeContent />
       <HomeFeatured />
       <HomeAbout />
+      <HomeTours />
     </Layout>
   )
 }
