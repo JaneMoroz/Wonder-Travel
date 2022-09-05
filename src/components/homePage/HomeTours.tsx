@@ -6,12 +6,12 @@ import { motion } from "framer-motion"
 import tour1 from "../../assets/images/tour-1.jpg"
 
 // Styled components
-import { Container } from "../../styles/globalStyles"
 import {
-  HomeToursSection,
-  TourContent,
-  TourImage,
-} from "../../styles/homeStyles"
+  Container,
+  MediaSection,
+  MediaContent,
+  MediaSource,
+} from "../../styles/globalStyles"
 
 // Context
 import { useGlobalActionContext } from "../../context/globalContext"
@@ -21,10 +21,10 @@ const HomeTours = () => {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <HomeToursSection>
+    <MediaSection>
       <Container>
         <Link to="/">
-          <TourContent
+          <MediaContent
             whileInView="visible"
             initial="hidden"
             viewport={{ once: true }}
@@ -48,7 +48,7 @@ const HomeTours = () => {
             onMouseEnter={() => onCursor("hovered")}
             onMouseLeave={() => onCursor("")}
           >
-            <h2 className="tour-title">
+            <h2 className="media-title">
               Экскурсия к <br /> бухте Русская
               <span className="arrow">
                 <motion.svg
@@ -65,8 +65,8 @@ const HomeTours = () => {
                 </motion.svg>
               </span>
             </h2>
-          </TourContent>
-          <TourImage>
+          </MediaContent>
+          <MediaSource>
             <img src={tour1} alt="Побережье бухты Русская" />
             <motion.div
               whileInView="hidden"
@@ -87,10 +87,10 @@ const HomeTours = () => {
               }}
               className="overlay"
             ></motion.div>
-          </TourImage>
+          </MediaSource>
         </Link>
       </Container>
-    </HomeToursSection>
+    </MediaSection>
   )
 }
 

@@ -5,12 +5,13 @@ import starsVideo from "../../assets/video/stars-falling.mp4"
 import activeVideo from "../../assets/video/hiking-small.mp4"
 
 // Styled components
-import { Container, Flex } from "../../styles/globalStyles"
 import {
-  HomeFeaturedSection,
-  FeaturedContent,
-  FeaturedVideo,
-} from "../../styles/homeStyles"
+  Container,
+  Flex,
+  MediaSection,
+  MediaContent,
+  MediaSource,
+} from "../../styles/globalStyles"
 
 // Context
 import { useGlobalActionContext } from "../../context/globalContext"
@@ -20,7 +21,7 @@ const HomeFeatured: React.FC = () => {
   const [hovered, setHovered] = useState(false)
 
   return (
-    <HomeFeaturedSection
+    <MediaSection
       whileInView="visible"
       initial="hidden"
       viewport={{ once: true }}
@@ -42,7 +43,7 @@ const HomeFeatured: React.FC = () => {
     >
       <Container>
         <Link to="/">
-          <FeaturedContent
+          <MediaContent
             onHoverStart={() => setHovered(!hovered)}
             onHoverEnd={() => setHovered(!hovered)}
             onMouseEnter={() => onCursor("hovered")}
@@ -59,7 +60,7 @@ const HomeFeatured: React.FC = () => {
                 <h4>2022</h4>
               </motion.div>
             </Flex>
-            <h2 className="featured-title">
+            <h2 className="media-title">
               Звездопад <br /> Персеиды
               <span className="arrow">
                 <motion.svg
@@ -76,8 +77,8 @@ const HomeFeatured: React.FC = () => {
                 </motion.svg>
               </span>
             </h2>
-          </FeaturedContent>
-          <FeaturedVideo>
+          </MediaContent>
+          <MediaSource>
             <video
               height="100%"
               width="100%"
@@ -86,10 +87,10 @@ const HomeFeatured: React.FC = () => {
               muted
               src={starsVideo}
             />
-          </FeaturedVideo>
+          </MediaSource>
         </Link>
       </Container>
-    </HomeFeaturedSection>
+    </MediaSection>
   )
 }
 
