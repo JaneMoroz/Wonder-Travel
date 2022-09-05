@@ -226,9 +226,26 @@ export const MediaSource = styled.div`
   z-index: -1;
   width: 100%;
   height: 480px;
-  display: block;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
-  img,
+
+  img {
+    width: 1244px;
+    height: 480px;
+    object-fit: cover;
+
+    /* @media (min-width: 1024px) {
+      width: 960px;
+    }
+    @media (min-width: 1216px) {
+      width: 1152px;
+    }
+    @media (min-width: 1408px) {
+      width: 1244px;
+    } */
+  }
+
   video {
     height: 100%;
     width: 100%;

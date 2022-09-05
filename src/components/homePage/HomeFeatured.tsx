@@ -22,6 +22,7 @@ const HomeFeatured: React.FC = () => {
 
   return (
     <MediaSection
+      exit={{ opacity: 0 }}
       whileInView="visible"
       initial="hidden"
       viewport={{ once: true }}

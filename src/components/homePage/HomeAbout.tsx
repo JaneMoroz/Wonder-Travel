@@ -32,6 +32,7 @@ const HomeAbout: React.FC = () => {
     <motion.div
       whileInView="visible"
       initial="hidden"
+      exit={{ opacity: 0 }}
       viewport={{ once: true }}
       variants={{
         visible: {

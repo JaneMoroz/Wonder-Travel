@@ -6,7 +6,7 @@ import { HomeContentSection, Content } from "../../styles/homeStyles"
 
 const HomeContent = () => {
   return (
-    <HomeContentSection>
+    <HomeContentSection exit={{ opacity: 0 }}>
       <Container>
         <Content
           whileInView="visible"

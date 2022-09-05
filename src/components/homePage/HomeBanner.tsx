@@ -125,7 +125,7 @@ const HomeBanner: React.FC = () => {
   }
 
   return (
-    <Banner>
+    <Banner exit={{ opacity: 0 }}>
       <Video>
         {size.height > 0 && size.width > 0 && (
           <video

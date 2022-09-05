@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 
 // Banner
-export const Banner = styled.div`
+export const Banner = styled(motion.div)`
   background: ${props => props.theme.background};
   height: 100vh;
   width: 100%;
@@ -55,7 +55,7 @@ export const Headline = styled(motion.span)`
 `
 
 // Content  Section
-export const HomeContentSection = styled.div`
+export const HomeContentSection = styled(motion.div)`
   margin-bottom: 200px;
 `
 

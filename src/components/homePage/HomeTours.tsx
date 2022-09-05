@@ -22,11 +22,13 @@ const HomeTours = () => {
 
   return (
     <MediaSection>
-      <Container>
-        <Link to="/">
+      {/* <Container> */}
+      <Link to="/tour">
+        <Container>
           <MediaContent
             whileInView="visible"
             initial="hidden"
+            exit="exit"
             viewport={{ once: true }}
             variants={{
               visible: {
@@ -42,6 +44,14 @@ const HomeTours = () => {
                 opacity: 0,
                 y: 72,
               },
+              exit: {
+                opacity: 0,
+                y: 72,
+                transition: {
+                  duration: 0.6,
+                  ease: [0.43, 0.13, 0.23, 0.96],
+                },
+              },
             }}
             onHoverStart={() => setHovered(!hovered)}
             onHoverEnd={() => setHovered(!hovered)}
@@ -53,7 +63,10 @@ const HomeTours = () => {
               <span className="arrow">
                 <motion.svg
                   animate={{ x: hovered ? 48 : 0 }}
-                  transition={{ duration: 0.6, ease: [0.6, 0.05, -0.01, 0.9] }}
+                  transition={{
+                    duration: 0.6,
+                    ease: [0.6, 0.05, -0.01, 0.9],
+                  }}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 101 57"
                 >
@@ -66,30 +79,31 @@ const HomeTours = () => {
               </span>
             </h2>
           </MediaContent>
-          <MediaSource>
-            <img src={tour1} alt="Побережье бухты Русская" />
-            <motion.div
-              whileInView="hidden"
-              initial="visible"
-              viewport={{ once: true }}
-              variants={{
-                visible: {
-                  width: "100%",
+        </Container>
+        <MediaSource>
+          <img src={tour1} alt="Побережье бухты Русская" />
+          <motion.div
+            whileInView="hidden"
+            initial="visible"
+            viewport={{ once: true }}
+            variants={{
+              visible: {
+                width: "100%",
+              },
+              hidden: {
+                width: "0",
+                transition: {
+                  delay: 0.8,
+                  duration: 1.4,
+                  ease: [0.6, 0.05, -0.01, 0.9],
                 },
-                hidden: {
-                  width: "0",
-                  transition: {
-                    delay: 0.8,
-                    duration: 1.4,
-                    ease: [0.6, 0.05, -0.01, 0.9],
-                  },
-                },
-              }}
-              className="overlay"
-            ></motion.div>
-          </MediaSource>
-        </Link>
-      </Container>
+              },
+            }}
+            className="overlay"
+          ></motion.div>
+        </MediaSource>
+      </Link>
+      {/* </Container> */}
     </MediaSection>
   )
 }
