@@ -1,8 +1,6 @@
 import * as React from "react"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import { HeadFC } from "gatsby"
+import { Layout } from "../components/index"
 
 const NotFoundPage: React.FC = () => (
   <Layout>

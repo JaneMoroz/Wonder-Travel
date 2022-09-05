@@ -1,12 +1,14 @@
 import React from "react"
-import Layout from "../components/layout"
 
 // Components
-import HomeBanner from "../components/homePage/HomeBanner"
-import HomeContent from "../components/homePage/HomeContent"
-import HomeFeatured from "../components/homePage/HomeFeatured"
-import HomeAbout from "../components/homePage/HomeAbout"
-import HomeTours from "../components/homePage/HomeTours"
+import {
+  Layout,
+  HomeBanner,
+  HomeContent,
+  HomeFeatured,
+  HomeAbout,
+  HomeTours,
+} from "../components/index"
 
 const IndexPage: React.FC = () => {
   return (

@@ -7,10 +7,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { normalize } from "styled-normalize"
 
 // Components
-import Header from "./header"
-import Cursor from "./customCursor"
-import Navigation from "./navigation"
-import Footer from "./footer"
+import { Header, Footer, CustomCursor as Cursor, Navigation } from "./index"
 
 // Context
 import { useGlobalStateContext } from "../context/globalContext"
